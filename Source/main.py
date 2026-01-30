@@ -97,7 +97,7 @@ def recalculateVoronoi():
     del array
 
 for i in range(20):
-    c = random.randint(100, 200)
+    c = random.randint(50, 250)
     newPoint = voronoiPoint(random.randint(0, screenWidth), random.randint(0, screenHeight), (c, c, c))
 
 recalculateVoronoi()
@@ -120,6 +120,10 @@ while running:
         if event.type == pygame.MOUSEBUTTONDOWN:
             newPoint = voronoiPoint(event.pos[0], event.pos[1], (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
             recalculateVoronoi()
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_e:
+                pygame.image.save(screen, "frame.png")
 
     for point in voronoiPoints:
         point.draw()
